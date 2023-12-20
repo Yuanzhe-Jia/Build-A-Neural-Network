@@ -19,4 +19,4 @@ These questions may have plagued those interested in neural networks. In this st
 12. Adam optimizer
 13. mini-batch training
 
-Additionally, various experiments have been conducted based on the self-built neural network structure. The prediction loss, prediction accuracy and running time are adopted as the evaluation methods of the experimental models. Hyper-parameter tuning, comparative analysis and ablation studies are also included. Combined with the evaluation performance and analysis results, the author proposes the best model in this study.
+Additionally, various experiments have been conducted based on the self-built neural network structure. The prediction loss, prediction accuracy and running time are adopted as the evaluation methods of the experimental models. Hyper-parameter tuning, comparative analysis and ablation studies are also included.
