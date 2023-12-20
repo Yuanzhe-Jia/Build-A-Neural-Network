@@ -1,9 +1,3 @@
-# info: COMP5329 - ASS 1
-# study: Build A Neural Network From Scratch
-# author: Yuanzhe Jia
-# sid：510534297
-# date: 2022-04-02
-
 """
 Note: in this model.py file, the author defined all the neural network modules.
 those functions will then be import by experimental_document.ipynb file
