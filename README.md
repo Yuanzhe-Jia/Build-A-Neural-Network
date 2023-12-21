@@ -1,4 +1,4 @@
-# Build a nerual network from scratch
+# Build a neural network from scratch
 
 - What is a neural network?
 - What modules are included in a neural network?
