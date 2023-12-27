@@ -21,8 +21,6 @@ These questions may have plagued those interested in neural networks. In this st
 12. Adam Optimizer
 13. Mini-batch Training
 
-Additionally, various experiments have been conducted based on the self-built neural network structure. The prediction loss, prediction accuracy and running time are adopted as the evaluation methods of the experimental models. Hyper-parameter tuning, comparative analysis and ablation studies are also included.
-
 ## How to use
 
 Step 1. Save the `model.py` file in the same root with your code files.
@@ -35,4 +33,4 @@ from model import softmax, softmax_cross_entropy_loss, softmax_cross_entropy_der
 from model import categorical_accuracy #evaluation metrics
 ```
 
-Step 3. See an image classification example in the `experiements.ipynb` file to learn how to build a neural network using these functions.
+Step 3. See an image classification example in the `experiements.ipynb` file to learn how to build a classifier based on the self-built neural network structure. The prediction loss, prediction accuracy and running time are adopted as the evaluation methods. Hyper-parameter tuning, comparative analysis and ablation studies are also included.
