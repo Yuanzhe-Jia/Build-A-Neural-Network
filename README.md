@@ -1,6 +1,6 @@
 # Build a neural network from scratch
 
-## Introduction
+### Introduction
 
 - What is a neural network?
 - What modules are included in a neural network?
@@ -21,7 +21,7 @@ These questions may have plagued those interested in neural networks. In this st
 12. Adam Optimizer
 13. Mini-batch Training
 
-## How to use
+### How to use
 
 Step 1. Save the `model.py` file in the same root with your code files.
 
