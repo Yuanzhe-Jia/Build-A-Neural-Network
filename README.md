@@ -7,19 +7,19 @@
 - What can neural networks be used for?
 
 These questions may have plagued those interested in neural networks. In this study, the author builds a neural network structure from scratch, and applies it to accomplish a multi-class classification task on a given dataset. The neural network modules achieved in the study include: 
-1. multiple hidden layers
-2. Kaiming initialization
-3. weight decay
-4. batch normalization
-5. dropout
-6. label smoothing
-7. ReLU activation function
-8. Tanh activation function
-9. GELU activation function
-10. softmax and cross-entropy loss
-11. momentum in SGD
-12. Adam optimizer
-13. mini-batch training
+1. Multiple Hidden Layers
+2. Kaiming Initialization
+3. Weight Decay
+4. Batch Normalization
+5. Dropout
+6. Label Smoothing
+7. ReLU Activation Function
+8. Tanh Activation Function
+9. GELU Activation Function
+10. Softmax and Cross-entropy Loss
+11. Momentum in SGD
+12. Adam Optimizer
+13. Mini-batch Training
 
 Additionally, various experiments have been conducted based on the self-built neural network structure. The prediction loss, prediction accuracy and running time are adopted as the evaluation methods of the experimental models. Hyper-parameter tuning, comparative analysis and ablation studies are also included.
 
@@ -35,4 +35,4 @@ from model import softmax, softmax_cross_entropy_loss, softmax_cross_entropy_der
 from model import categorical_accuracy #evaluation metrics
 ```
 
-Step 3. See examples in the `experiements.ipynb` file to learn how to build a neural network usding these functions.
+Step 3. See an image classification example in the `experiements.ipynb` file to learn how to build a neural network using these functions.
