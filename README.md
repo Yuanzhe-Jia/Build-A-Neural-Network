@@ -6,7 +6,10 @@
 - What modules are included in a neural network?
 - What can neural networks be used for?
 
-These questions may have plagued those interested in neural networks. In this study, the author builds a neural network structure from scratch, and applies it to accomplish a multi-class classification task on a given dataset. The neural network modules achieved in the study include: 
+These questions may have plagued those interested in neural networks. 
+In this study, the author builds a neural network structure from scratch, and applies it to accomplish a multi-class classification task. 
+The neural network modules include: 
+
 1. Multiple Hidden Layers
 2. Kaiming Initialization
 3. Weight Decay
@@ -21,16 +24,25 @@ These questions may have plagued those interested in neural networks. In this st
 12. Adam Optimizer
 13. Mini-batch Training
 
+
 ### How to use
 
-Step 1. Save the `model.py` file in the same root with your code files.
-
-Step 2. Import functions from the `model.py` file.
+Step 1. 
+Install package.https://pypi.org/project/neural-network-yuanzhe/
 ```
-from model import dense, batch_norm, dropout, model #neural network architecture
-from model import relu, gelu, tanh #activation functions
-from model import softmax, softmax_cross_entropy_loss, softmax_cross_entropy_derivatives #loss functions
-from model import categorical_accuracy #evaluation metrics
+pip install neural-network-yuanzhe
 ```
 
-Step 3. See an image classification example in the `experiements.ipynb` file to learn how to build a classifier based on the self-built neural network structure. The prediction loss, prediction accuracy and running time are adopted as the evaluation methods. Hyper-parameter tuning, comparative analysis and ablation studies are also included.
+Step 2. 
+Import functions from the package.
+```
+from neural-network-yuanzhe import dense, batch_norm, dropout, model #neural network architecture
+from neural-network-yuanzhe import relu, gelu, tanh #activation functions
+from neural-network-yuanzhe import softmax, softmax_cross_entropy_loss, softmax_cross_entropy_derivatives #loss functions
+from neural-network-yuanzhe import categorical_accuracy #evaluation metrics
+```
+
+Step 3. 
+See an image classification example in the `experiements.ipynb` file to learn how to build a classifier based on the self-built neural network structure. 
+The prediction loss, prediction accuracy and running time are adopted as the evaluation methods. 
+Hyper-parameter tuning, comparative analysis and ablation studies are also included.
