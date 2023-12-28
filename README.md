@@ -28,7 +28,7 @@ The neural network modules include:
 ### How to use
 
 Step 1. 
-Install package.https://pypi.org/project/neural-network-yuanzhe/
+Install [package](https://pypi.org/project/neural-network-yuanzhe/).
 ```
 pip install neural-network-yuanzhe
 ```
