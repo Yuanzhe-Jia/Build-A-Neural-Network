@@ -1,4 +1,4 @@
-# Build a neural network from scratch
+# Build A Neural Network From Scratch
 
 ### Introduction
 
