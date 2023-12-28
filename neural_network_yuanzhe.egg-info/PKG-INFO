@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
-Name: Build-A-Neural-Network-test
+Name: neural_network_yuanzhe
 Version: 1.0.0
-Summary: A small example package
-Author: zhaoshidong
-Author-email: 18846067738@163.com
+Summary: Build a neural network from scratch
+Author: yuanzhe-jia
+Author-email: jiayuanzhe1@gmail.com
 License: BSD License
 Platform: all
 Classifier: Intended Audience :: Developers
@@ -15,7 +15,7 @@ Classifier: Programming Language :: Python :: 3.10
 Classifier: Topic :: Software Development :: Libraries
 Requires-Dist: numpy
 
-# Build a neural network from scratch
+# Build A Neural Network From Scratch
 
 ### Introduction
 

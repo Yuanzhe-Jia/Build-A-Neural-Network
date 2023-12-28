@@ -2,12 +2,12 @@ from distutils.core import setup
 from setuptools import find_packages
 with open("README.md", "r") as f:
     long_description = f.read()
-setup(name='Build-A-Neural-Network-test',
+setup(name='neural_network_yuanzhe',
     version='1.0.0',
-    description='A small example package',
+    description='Build a neural network from scratch',
     long_description=long_description,
-    author='zhaoshidong',
-    author_email='18846067738@163.com',
+    author='yuanzhe-jia',
+    author_email='jiayuanzhe1@gmail.com',
     install_requires=["numpy"],
     license='BSD License',
     packages=find_packages(),
