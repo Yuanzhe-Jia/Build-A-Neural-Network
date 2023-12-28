@@ -1,7 +1,0 @@
-README.md
-setup.py
-neural_network_yuanzhe.egg-info/PKG-INFO
-neural_network_yuanzhe.egg-info/SOURCES.txt
-neural_network_yuanzhe.egg-info/dependency_links.txt
-neural_network_yuanzhe.egg-info/requires.txt
-neural_network_yuanzhe.egg-info/top_level.txt
