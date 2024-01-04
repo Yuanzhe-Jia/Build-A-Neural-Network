@@ -28,18 +28,15 @@ The neural network modules include:
 ### How to use
 
 Step 1. 
-Install [package](https://pypi.org/project/neural-network-yuanzhe/).
+Install [packages](https://pypi.org/project/network-yuanzhe/).
 ```
-pip install neural-network-yuanzhe
+!pip install network_yuanzhe==1.0.2
 ```
 
 Step 2. 
 Import functions from the package.
 ```
-from neural-network-yuanzhe import dense, batch_norm, dropout, model #neural network architecture
-from neural-network-yuanzhe import relu, gelu, tanh #activation functions
-from neural-network-yuanzhe import softmax, softmax_cross_entropy_loss, softmax_cross_entropy_derivatives #loss functions
-from neural-network-yuanzhe import categorical_accuracy #evaluation metrics
+from network_yuanzhe import model
 ```
 
 Step 3. 
