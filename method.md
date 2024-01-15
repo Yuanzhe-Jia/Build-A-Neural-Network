@@ -1,3 +1,4 @@
+
 # Method
 
 ### 1. Multiple Hidden Layers
@@ -59,11 +60,11 @@ If other activation functions are used, the upper and lower bounds of the unifor
 ### 3. Weight Decay
 
 $$
-J(θ_t)=J(θ_t )+λ⁄2 ‖θ_t ‖_2^2
+J ̂(θ_t)=J(θ_t)+λ⁄2 ‖θ_t ‖_2^2
 $$
 
 $$
-θ_{t+1}=θ_t-η∇_{θ_t} J(θ_t)
+θ_{t+1}=θ_t-η∇_{θ_t} J ̂(θ_t)
 $$
 
 Weight decay is one of effective ways to prevent overfitting. 
@@ -73,14 +74,37 @@ If the weight decay is large, the loss of a complex model will also be large.
 As is well-known, the optimization purpose of neural networks is to minimize the loss function $J(θ_t)$. 
 If weight decay $λ$ is greater than zero, neural networks will minimize a new loss function $J(θ_t)$, which is equivalent to iterate in the direction where parameters are not too complex, so as to mitigate the overfitting problem. 
 In the above formulas, the hyper-parameter $η$ is the learning rate, it is defined as the update step size of the optimizer. 
-$θ_t$ represents weights and biases at the time step $t$, it will be updated by the overall update vector $η∇_{θ_t} J(θ_t)$. 
+$θ_t$ represents weights and biases at the time step $t$, it will be updated by the overall update vector $η∇_{θ_t} J ̂(θ_t)$. 
 Independent of the above theory, engineers found that an improved model would be obtained by directly decaying the updated parameters at each time step. 
 In this document, the engineer's version of weight decay will be adopted.
 
 
 ### 4. Batch Normalization
 
+$$
+μ_B←1/m ∑_{i=1}^m x_i
+$$
 
+$$
+σ_B^2←1/m ∑_{i=1}^m (x_i-μ_B)^2
+$$
+
+$$
+x ̂_i←(x_i-μ_B)/√(σ_B^2+ε)
+$$
+
+$$
+y_i←γx ̂_i+β≡BN_{r,β} (x_i)
+$$
+
+Batch normalization is a normalization layer commonly used in neural networks, since it can reduce the covariance shift, as well as effects of exploding gradients and vanishing gradients. 
+Batch normalization focuses on each feature over all the training data in the mini-batch. 
+Specifically, it normalizes input data $x_i$ using the mean $μ_B$ and variance $σ_B^2$ of the mini-batch and introduces two learnable parameters, $γ$ and $β$, which scale and shift the normalised data $x ̂_i$ respectively. 
+The hyper-parameter $ε$ is a very small value used to prevent the denominator from being zero. 
+Finally, the processed data $y_i$ is the output of the batch normalization layer. 
+Batch normalization is sensitive to batch size $m$. When the batch size becomes smaller, the error increases rapidly, which is caused by inaccurate batch statistical estimation. 
+In addition, since batch normalization is dependent on the batch size, it cannot be applied at test time the same way as the training time. 
+Instead, during test time, batch normalization utilizes moving average and variance to perform inference.
 
 
 ### 5. Dropout
