@@ -109,9 +109,25 @@ Instead, during test time, batch normalization utilizes moving average and varia
 
 ### 5. Dropout
 
+$$
+r_j^{(l)}=Bernoulli(p)
+$$
+
+$$
+x ̂^{(l)}=r^{(l)}*x^{(l)}
+$$
+
+$$
+y_i^{(l+1)}=w_i^{(l+1)}x ̂^{(l)}+b_i^{(l+1)}
+$$
+
+$$
+x_i^{(l+1)}=f(y_i^{(l+1)})
+$$
 
 Dropout is a simple but effective technique for mitigating the overfitting problem.
 According to this method, when training neural networks, each neuron is retained with a certain probability of $p$, which is usually set to 0.5. 
+And $r_j^{(l)}$ is the probability rate for the neuron $j$ in the layer $l$, it will determine if the neuron should use the input $x^{(l)}$.
 While in test phase, all neurons are involved in prediction. The intuition of this approach is similar to ensemble learning, which is a technique intended to deal with overfitting problem by combining predictions from many different models. 
 However in real scenarios, the inverted dropout is usually applied. 
 To be Specific, during training time, parameters in the neural network are amplified by a factor of $1/p$. While in test time, the network is used as a whole and no parameter scaling will be performed.
