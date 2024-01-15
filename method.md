@@ -110,16 +110,41 @@ Instead, during test time, batch normalization utilizes moving average and varia
 ### 5. Dropout
 
 
-
+Dropout is a simple but effective technique for mitigating the overfitting problem.
+According to this method, when training neural networks, each neuron is retained with a certain probability of $p$, which is usually set to 0.5. 
+While in test phase, all neurons are involved in prediction. The intuition of this approach is similar to ensemble learning, which is a technique intended to deal with overfitting problem by combining predictions from many different models. 
+However in real scenarios, the inverted dropout is usually applied. 
+To be Specific, during training time, parameters in the neural network are amplified by a factor of $1/p$. While in test time, the network is used as a whole and no parameter scaling will be performed.
 
 
 ### 6. Label Smoothing
 
+$$
+y_k^{Ls}=y_{k} (1-α)+α∕K
+$$
 
+Label smoothing is a technique that can prevent the overfitting problem and improve the generalization ability of the model. 
+To be specific, label smoothing is to add noise on the basis of one-hot encoding. 
+This method is simple but effective, and has achieved remarkable results in many image classification tasks. 
+It is obvious that one-hot encoding will make the prediction probability of the correct classification get closer and closer to 1. 
+In other words, one-hot encoding is not soft enough, resulting in the model being too confident in its prediction. 
+By adding noise to the one-hot labels, the label smoothing technique can alleviate the problem of the model being too arbitrary, thereby enhancing the generalization ability of the model. 
+In the above formula, $y_k$ is the one-hot label for a particular category $k$, and $α$ is a hyper-parameter, which is usually set to 0.1. 
+$K$ is the number of categories. 
+$y_k^{Ls}$ is the label of the category $k$ processed by the label smoothing technique.
 
 
 ### 7. ReLU Activation Function
 
+$$
+relu(x)=max⁡(0,x)
+$$
+
+The full name of ReLU is Rectified Linear Unit. 
+It performs a threshold operation on each input element $x$, where values less than zero are set to zero. 
+ReLU activation function is by far the most widely used activation function in deep learning applications, since it has two main advantages. 
+The one is the fast calculation, because it does not involve exponentiation and division, which improves the overall calculation speed. 
+The second is that ReLU activation function introduces sparsity in the hidden units as it compresses some input values to zero.
 
 
 ### 8. Tanh Activation Function
