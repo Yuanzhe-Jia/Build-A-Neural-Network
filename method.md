@@ -1,6 +1,6 @@
-# Methodology
+# Method
 
-### 1. Multiple Hidden Layers
+### Multiple Hidden Layers
 
 Multiple hidden layers are the basic structure in the neural network. 
 This structure helps the neural network satisfy almost all types of data transformation operations and fit various complex problems. 
