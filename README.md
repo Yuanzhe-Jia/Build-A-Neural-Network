@@ -10,7 +10,7 @@ These questions may have plagued those interested in neural networks.
 In this study, the author builds a neural network structure from scratch, and applies it to accomplish a multi-class classification task. 
 The neural network modules include: 
 
-1. Multiple Hidden Layers
+1. [Multiple Hidden Layers](https://github.com/Yuanzhe-Jia/Build-A-Neural-Network/assets/104203996/42d19ee3-6307-46d4-99b3-25594445811e)
 2. Kaiming Initialization
 3. Weight Decay
 4. Batch Normalization
