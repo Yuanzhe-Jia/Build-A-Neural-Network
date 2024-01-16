@@ -183,14 +183,32 @@ $$
 
 The full name of GELU is Gaussian Error Linear Unit. 
 Similar to ReLU activation function, GELU activation function can also preserve the input element $x$, or compress it to zero. 
-But their difference is that in GELU activation function, keeping the original value or compressing it to zero depends on probability that the current input is greater than the rest of the inputs. 
-It can be seen that when the input element is larger, it is more likely to be retained, and the smaller the input is, the more likely it is to be reset to zero. 
+But their difference is that in GELU activation function, 
+keeping the original value or compressing it to zero depends on probability that the current input is greater than the rest of the inputs. 
+It can be seen that when the input element is larger, it is more likely to be retained, 
+and the smaller the input is, the more likely it is to be reset to zero. 
 In recent years, GELU activation function has been widely used in Transformer models including BERT, GPT2, etc.
 
 
 ### 10. Softmax and Cross-entropy Loss
 
+$$
+a_i=softmax(z_i)=ⅇ^{z_i}/(∑_{j=1}^K ⅇ^{z_j})
+$$
 
+$$
+J=-∑_{i=1}^K y_i log⁡(a_i)
+$$
+
+The output values of a neural network are difficult to interpret, 
+so they need to be converted into a probability distribution between 0 and 1 with the help of the softmax function. 
+In the above formulas, $K$ represents the number of categories, 
+$z_i$ represents the input value of the current category $i$, which will be normalised by the softmax function. 
+The output value ($a_i$) is between 0 and 1, and the sum of softmax outputs is equal to 1. 
+Cross-entropy is used to evaluate the loss $J$ between the probability distribution obtained by the neural network and the true distribution. 
+It depicts the distance between the actual output probability and the expected output probability, 
+that is, the smaller the cross-entropy, the closer the two probability distributions are. 
+And $y_i$ represents the expected output probability of the category $i$, which usually needs to be converted into one-hot format.
 
 
 ### 11. Momentum in SGD
