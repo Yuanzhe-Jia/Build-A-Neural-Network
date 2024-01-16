@@ -110,7 +110,7 @@ Instead, during test time, batch normalization utilizes moving average and varia
 ### 5. Dropout
 
 $$
-r_j^{(l)}=Bernoulli(p)
+r_j^{(l)} \sim Bernoulli(p)
 $$
 
 $$
