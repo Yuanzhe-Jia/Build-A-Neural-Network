@@ -1,3 +1,4 @@
+
 # Method
 
 ### 1. Multiple Hidden Layers
@@ -40,7 +41,7 @@ As is mentioned above, multiple hidden layers are the basic structure of neural 
 ### 2. Kaiming Initialization
 
 $$
-w_i=⋃(-√(6⁄n_i ),√(6⁄n_i ))
+w_i=⋃(-\sqrt{\frac{6}{n_i}}, \sqrt{\frac{6}{n_i}})
 $$
 
 $$
@@ -59,7 +60,7 @@ If other activation functions are used, the upper and lower bounds of the unifor
 ### 3. Weight Decay
 
 $$
-J ̂(θ_t)=J(θ_t)+λ⁄2 ‖θ_t ‖_2^2
+J ̂(θ_t)=J(θ_t)+\frac{λ}{2} ‖θ_t ‖_2^2
 $$
 
 $$
@@ -81,15 +82,15 @@ In this document, the engineer's version of weight decay will be adopted.
 ### 4. Batch Normalization
 
 $$
-μ_B←1/m ∑_{i=1}^m x_i
+μ_B←\frac{1}{m} ∑_{i=1}^m x_i
 $$
 
 $$
-σ_B^2←1/m ∑_{i=1}^m (x_i-μ_B)^2
+σ_B^2←\frac{1}{m} ∑_{i=1}^m (x_i-μ_B)^2
 $$
 
 $$
-x ̂_i←(x_i-μ_B)/√(σ_B^2+ε)
+x ̂_i←\frac{x_i-μ_B}{\sqrt{σ_B^2+ε}}
 $$
 
 $$
@@ -135,7 +136,7 @@ To be Specific, during training time, parameters in the neural network are ampli
 ### 6. Label Smoothing
 
 $$
-y_k^{Ls}=y_{k} (1-α)+α∕K
+y_k^{Ls}=y_{k} (1-α)+\frac{α}{K}
 $$
 
 Label smoothing is a technique that can prevent the overfitting problem and improve the generalization ability of the model. 
@@ -165,7 +166,7 @@ The second is that ReLU activation function introduces sparsity in the hidden un
 ### 8. Tanh Activation Function
 
 $$
-tanh(x)=(ⅇ^{x}-ⅇ^{-x})/(ⅇ^{x}+ⅇ^{-x})
+tanh(x)=\frac{ⅇ^{x}-ⅇ^{-x}}{ⅇ^{x}+ⅇ^{-x}}
 $$
 
 The full name of Tanh is Hyperbolic Tangent Function. 
@@ -178,7 +179,7 @@ However, this function cannot effectively solve the vanishing gradient problem. 
 ### 9. GELU Activation Function
 
 $$
-gelu(x)=0.5x(1+tanh⁡( √{(2⁄π) (x+0.44715x^3 )}))
+gelu(x)=0.5x(1+tanh⁡(\sqrt{\frac{2}{π}} (x+0.44715x^3)))
 $$
 
 The full name of GELU is Gaussian Error Linear Unit. 
@@ -193,7 +194,7 @@ In recent years, GELU activation function has been widely used in Transformer mo
 ### 10. Softmax and Cross-entropy Loss
 
 $$
-a_i=softmax(z_i)=ⅇ^{z_i}/(∑_{j=1}^K ⅇ^{z_j})
+a_i=softmax(z_i)=\frac{ⅇ^{z_i}}{∑_{j=1}^K ⅇ^{z_j}}
 $$
 
 $$
@@ -213,11 +214,62 @@ And $y_i$ represents the expected output probability of the category $i$, which 
 
 ### 11. Momentum in SGD
 
+$$
+v_t=γv_{t-1}+η∇_{θ_t} J{θ_t}
+$$
+
+$$
+θ_{t+1}=θ_t-v_t
+$$
+
+Momentum is a commonly used acceleration method for (Stochastic Gradient Descent) SGD optimizer. 
+It adds a portion of the update vector from past time steps to the current update vector, resulting in the effect of speeding up optimization and suppressing oscillations. 
+Specifically, if the current gradient $∇_{θ_t} J(θ_t)$ and the momentum term $v_{t-1}$ point in the same direction, the overall update vector $v_t$ will increase, which is equivalent to speeding up the optimizer. 
+If the current gradient and the momentum term point in the opposite direction, then the overall update vector is reduced, which is equivalent to reducing oscillations. 
+In the above formulas, the hyper-parameter $γ$ is a momentum factor, which is usually set to 0.9. 
+The hyper-parameter $η$ is the learning rate, it is defined as the update step size of the optimizer. 
+And $θ_t$ represents weights and biases at time step $t$, it will be updated by the overall update vector $v_t$.
 
 
 ### 12. Adam Optimizer
 
+$$
+g_t=∇_{θ_t} J(θ_t)
+$$
 
+$$
+m_t=β_1 m_{t-1}+(1-β_1) g_t 
+$$
+
+$$
+ν_t=β_2 v_{t-1}+(1-β_2) g_t^2  
+$$
+
+$$
+m ̂_t=\frac{m_t}{1-β_1^t} 
+$$
+
+$$
+v ̂_t=\frac{v_t}{1-β_2^t}
+$$
+
+$$
+θ_{t+1}=θ_t-\frac{η}{\sqrt{v ̂_t+ε}} m ̂_t
+$$
+
+The full name of Adam is Adaptive Moment Estimation. 
+It computes an adaptive learning rate for each parameter in the neural network. 
+Similar to momentum in SGD mentioned above, Adam optimizer maintains an exponentially decaying average of past gradients $m_t$. 
+In addition, Adam optimizer also applies the exponentially decaying average of past squared gradients $ν_t$. 
+$m_t$ and $ν_t$ are estimates of the first and second moments of the gradients $g_t$, respectively. 
+Since $m_t$ and $ν_t$ are almost zero during the initial time steps, they are bias-corrected to $m ̂_t$ and $v ̂_t$. 
+It can be observed that both $m ̂_t$ and $v ̂_t$ gradually decrease as the time step $t$ increases, which means the role of the first moment estimate starts to weaken, but the role of the second moment estimate starts to increase. 
+This is because, as the time step goes on, the parameters in the neural network will be closer to the optimal, and the optimizer should slow down the update pace and focus more on the adjustment of the learning rate of different parameters. 
+In the above formulas, the hyper-parameter $β_1$ is the first moment factor, which is usually set to 0.9. 
+The hyper-parameter $β_2$ is the second moment factor, which is usually set to 0.999. 
+The hyper-parameter $η$ is the learning rate, it is defined as the update step size of the optimizer. 
+The hyper-parameter $ε$ is a very small value used to prevent the denominator from being zero. 
+And $θ_t$ represents weights and biases at the time step $t$, it will be updated by the overall update vector $\frac{η}{\sqrt{v ̂_t+ε}} m ̂_t$.
 
 
 ### 13. Mini-batch Training
