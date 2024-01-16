@@ -1,4 +1,3 @@
-
 # Method
 
 ### 1. Multiple Hidden Layers
@@ -165,10 +164,28 @@ The second is that ReLU activation function introduces sparsity in the hidden un
 
 ### 8. Tanh Activation Function
 
+$$
+tanh(x)=(ⅇ^{x}-ⅇ^{-x})/(ⅇ^{x}+ⅇ^{-x})
+$$
+
+The full name of Tanh is Hyperbolic Tangent Function. 
+It squeezes each input element $x$ between -1 and 1. 
+Tanh activation function has been widely adopted in the recurrent neural networks (RNN) for natural language processing (NLP) tasks. 
+The benefit of this function is to speed up the back-propagation process due to its zero-centred nature. 
+However, this function cannot effectively solve the vanishing gradient problem. When the input elements are too large or too small, the gradients of the function will be close to zero.
 
 
 ### 9. GELU Activation Function
 
+$$
+gelu(x)=0.5x(1+tanh⁡( √{(2⁄π) (x+0.44715x^3 )}))
+$$
+
+The full name of GELU is Gaussian Error Linear Unit. 
+Similar to ReLU activation function, GELU activation function can also preserve the input element $x$, or compress it to zero. 
+But their difference is that in GELU activation function, keeping the original value or compressing it to zero depends on probability that the current input is greater than the rest of the inputs. 
+It can be seen that when the input element is larger, it is more likely to be retained, and the smaller the input is, the more likely it is to be reset to zero. 
+In recent years, GELU activation function has been widely used in Transformer models including BERT, GPT2, etc.
 
 
 ### 10. Softmax and Cross-entropy Loss
