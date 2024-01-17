@@ -4,23 +4,23 @@
 ### 1. Multiple Hidden Layers
 
 $$
-y_1=w_1^T x+b_1
+y_1 = w_1^T x + b_1
 $$
 
 $$
-a_1=σ_1 (y_1)
+a_1 = σ_1 (y_1)
 $$
 
 $$
-y_2=w_2^T a_1+b_2
+y_2 = w_2^T a_1 + b_2
 $$
 
 $$
-a_2=σ_2 (y_2)
+a_2 = σ_2 (y_2)
 $$
 
 $$
-y ̂=w_3^T a_2+b_3
+\hat{y} = w_3^T a_2+b_3
 $$
 
 Multiple hidden layers are the basic structure in neural networks. 
@@ -30,7 +30,7 @@ The number of scaling and shifting depends on the output size (i.e., number of n
 For example, if the output size is 10, an input data will be transformed by 10 times at this layer. 
 $σ_1$ is the activation function of the first hidden layer, after processing $y_1$ by $σ_1$, $a_1$ is obtained as the output of the first layer. 
 Similar to the above, $w_2$ and $b_2$ are the parameters of the second hidden layer, $σ_2$ is the activation function of this layer, and $a_2$ is regarded as the output of the layer. 
-$w_3$ and $b_3$ are the parameters of the output layer, they scale and shift the input data $a_2$ to obtain $y ̂$, which is the prediction results of the neural network. 
+$w_3$ and $b_3$ are the parameters of the output layer, they scale and shift the input data $a_2$ to obtain $\hat{y}$, which is the prediction results of the neural network. 
 Basically, the multi-layer architecture of a neural network contains two main characteristics. 
 The first is to perform feature extraction. 
 The neurons in each layer are equivalent to feature extractors, implementing different transformations on the input data. 
@@ -41,11 +41,11 @@ As is mentioned above, multiple hidden layers are the basic structure of neural 
 ### 2. Kaiming Initialization
 
 $$
-w_i=⋃(-\sqrt{\frac{6}{n_i}}, \sqrt{\frac{6}{n_i}})
+w_i \sim ⋃(-\sqrt{\frac{6}{n_i}}, \sqrt{\frac{6}{n_i}})
 $$
 
 $$
-b_i=0
+b_i = 0
 $$
 
 The initial weights in neural networks should not be too large or too small, larger weights will lead to exploding gradient problem, while smaller weights will also bring vanishing gradient problem. 
@@ -60,11 +60,11 @@ If other activation functions are used, the upper and lower bounds of the unifor
 ### 3. Weight Decay
 
 $$
-J ̂(θ_t)=J(θ_t)+\frac{λ}{2} ‖θ_t ‖_2^2
+\hat{J}(θ_t) = J(θ_t) + \frac{λ}{2} ‖θ_t‖_2^2
 $$
 
 $$
-θ_{t+1}=θ_t-η∇_{θ_t} J ̂(θ_t)
+θ_{t+1} = θ_t - η∇_{θ_t} \hat{J}(θ_t)
 $$
 
 Weight decay is one of effective ways to prevent overfitting. 
@@ -74,7 +74,7 @@ If the weight decay is large, the loss of a complex model will also be large.
 As is well-known, the optimization purpose of neural networks is to minimize the loss function $J(θ_t)$. 
 If weight decay $λ$ is greater than zero, neural networks will minimize a new loss function $J(θ_t)$, which is equivalent to iterate in the direction where parameters are not too complex, so as to mitigate the overfitting problem. 
 In the above formulas, the hyper-parameter $η$ is the learning rate, it is defined as the update step size of the optimizer. 
-$θ_t$ represents weights and biases at the time step $t$, it will be updated by the overall update vector $η∇_{θ_t} J ̂(θ_t)$. 
+$θ_t$ represents weights and biases at the time step $t$, it will be updated by the overall update vector $η∇_{θ_t} \hat{J}(θ_t)$. 
 Independent of the above theory, engineers found that an improved model would be obtained by directly decaying the updated parameters at each time step. 
 In this document, the engineer's version of weight decay will be adopted.
 
@@ -82,24 +82,24 @@ In this document, the engineer's version of weight decay will be adopted.
 ### 4. Batch Normalization
 
 $$
-μ_B←\frac{1}{m} ∑_{i=1}^m x_i
+μ_B ← \frac{1}{m} ∑_{i=1}^m x_i
 $$
 
 $$
-σ_B^2←\frac{1}{m} ∑_{i=1}^m (x_i-μ_B)^2
+σ_B^2 ← \frac{1}{m} ∑_{i=1}^m (x_i-μ_B)^2
 $$
 
 $$
-x ̂_i←\frac{x_i-μ_B}{\sqrt{σ_B^2+ε}}
+\hat{x_i} ← \frac{x_i-μ_B}{\sqrt{σ_B^2+ε}}
 $$
 
 $$
-y_i←γx ̂_i+β≡BN_{r,β} (x_i)
+y_i ← γ\hat{x_i} + β ≡ BN_{r,β} (x_i)
 $$
 
 Batch normalization is a normalization layer commonly used in neural networks, since it can reduce the covariance shift, as well as effects of exploding gradients and vanishing gradients. 
 Batch normalization focuses on each feature over all the training data in the mini-batch. 
-Specifically, it normalizes input data $x_i$ using the mean $μ_B$ and variance $σ_B^2$ of the mini-batch and introduces two learnable parameters, $γ$ and $β$, which scale and shift the normalised data $x ̂_i$ respectively. 
+Specifically, it normalizes input data $x_i$ using the mean $μ_B$ and variance $σ_B^2$ of the mini-batch and introduces two learnable parameters, $γ$ and $β$, which scale and shift the normalised data $\hat{x_i}$ respectively. 
 The hyper-parameter $ε$ is a very small value used to prevent the denominator from being zero. 
 Finally, the processed data $y_i$ is the output of the batch normalization layer. 
 Batch normalization is sensitive to batch size $m$. When the batch size becomes smaller, the error increases rapidly, which is caused by inaccurate batch statistical estimation. 
@@ -114,15 +114,15 @@ r_j^{(l)} \sim Bernoulli(p)
 $$
 
 $$
-x ̂^{(l)}=r^{(l)}*x^{(l)}
+\hat{x}^{(l)} = r^{(l)} * x^{(l)}
 $$
 
 $$
-y_i^{(l+1)}=w_i^{(l+1)}x ̂^{(l)}+b_i^{(l+1)}
+y_i^{(l+1)} = w_i^{(l+1)} \hat{x}^{(l)} + b_i^{(l+1)}
 $$
 
 $$
-x_i^{(l+1)}=f(y_i^{(l+1)})
+x_i^{(l+1)} = f(y_i^{(l+1)})
 $$
 
 Dropout is a simple but effective technique for mitigating the overfitting problem.
@@ -136,7 +136,7 @@ To be Specific, during training time, parameters in the neural network are ampli
 ### 6. Label Smoothing
 
 $$
-y_k^{Ls}=y_{k} (1-α)+\frac{α}{K}
+y_k^{Ls} = y_{k} (1-α) + \frac{α}{K}
 $$
 
 Label smoothing is a technique that can prevent the overfitting problem and improve the generalization ability of the model. 
@@ -153,7 +153,7 @@ $y_k^{Ls}$ is the label of the category $k$ processed by the label smoothing tec
 ### 7. ReLU Activation Function
 
 $$
-relu(x)=max⁡(0,x)
+relu(x) = max⁡(0,x)
 $$
 
 The full name of ReLU is Rectified Linear Unit. 
@@ -166,7 +166,7 @@ The second is that ReLU activation function introduces sparsity in the hidden un
 ### 8. Tanh Activation Function
 
 $$
-tanh(x)=\frac{ⅇ^{x}-ⅇ^{-x}}{ⅇ^{x}+ⅇ^{-x}}
+tanh(x) = \frac{ⅇ^{x}-ⅇ^{-x}}{ⅇ^{x}+ⅇ^{-x}}
 $$
 
 The full name of Tanh is Hyperbolic Tangent Function. 
@@ -179,7 +179,7 @@ However, this function cannot effectively solve the vanishing gradient problem. 
 ### 9. GELU Activation Function
 
 $$
-gelu(x)=0.5x(1+tanh⁡(\sqrt{\frac{2}{π}} (x+0.44715x^3)))
+gelu(x) = 0.5x(1 + tanh⁡(\sqrt{\frac{2}{π}} (x + 0.44715x^3)))
 $$
 
 The full name of GELU is Gaussian Error Linear Unit. 
@@ -194,11 +194,11 @@ In recent years, GELU activation function has been widely used in Transformer mo
 ### 10. Softmax and Cross-entropy Loss
 
 $$
-a_i=softmax(z_i)=\frac{ⅇ^{z_i}}{∑_{j=1}^K ⅇ^{z_j}}
+a_i = softmax(z_i) = \frac{ⅇ^{z_i}}{∑_{j=1}^K ⅇ^{z_j}}
 $$
 
 $$
-J=-∑_{i=1}^K y_i log⁡(a_i)
+J = -∑_{i=1}^K y_i log⁡(a_i)
 $$
 
 The output values of a neural network are difficult to interpret, 
@@ -215,11 +215,11 @@ And $y_i$ represents the expected output probability of the category $i$, which 
 ### 11. Momentum in SGD
 
 $$
-v_t=γv_{t-1}+η∇_{θ_t} J{θ_t}
+v_t = γv_{t-1} + η∇_{θ_t} J{θ_t}
 $$
 
 $$
-θ_{t+1}=θ_t-v_t
+θ_{t+1} = θ_t - v_t
 $$
 
 Momentum is a commonly used acceleration method for (Stochastic Gradient Descent) SGD optimizer. 
@@ -234,27 +234,27 @@ And $θ_t$ represents weights and biases at time step $t$, it will be updated by
 ### 12. Adam Optimizer
 
 $$
-g_t=∇_{θ_t} J(θ_t)
+g_t = ∇_{θ_t} J(θ_t)
 $$
 
 $$
-m_t=β_1 m_{t-1}+(1-β_1) g_t 
+m_t = β_1 m_{t-1} + (1-β_1) g_t 
 $$
 
 $$
-ν_t=β_2 v_{t-1}+(1-β_2) g_t^2  
+ν_t = β_2 v_{t-1} + (1-β_2) g_t^2  
 $$
 
 $$
-m ̂_t=\frac{m_t}{1-β_1^t} 
+\hat{m_t} = \frac{m_t}{1-β_1^t} 
 $$
 
 $$
-v ̂_t=\frac{v_t}{1-β_2^t}
+\hat{v_t} = \frac{v_t}{1-β_2^t}
 $$
 
 $$
-θ_{t+1}=θ_t-\frac{η}{\sqrt{v ̂_t+ε}} m ̂_t
+θ_{t+1} = θ_t - \frac{η}{\sqrt{\hat{v_t}+ε}} \hat{m_t}
 $$
 
 The full name of Adam is Adaptive Moment Estimation. 
@@ -262,20 +262,20 @@ It computes an adaptive learning rate for each parameter in the neural network.
 Similar to momentum in SGD mentioned above, Adam optimizer maintains an exponentially decaying average of past gradients $m_t$. 
 In addition, Adam optimizer also applies the exponentially decaying average of past squared gradients $ν_t$. 
 $m_t$ and $ν_t$ are estimates of the first and second moments of the gradients $g_t$, respectively. 
-Since $m_t$ and $ν_t$ are almost zero during the initial time steps, they are bias-corrected to $m ̂_t$ and $v ̂_t$. 
-It can be observed that both $m ̂_t$ and $v ̂_t$ gradually decrease as the time step $t$ increases, which means the role of the first moment estimate starts to weaken, but the role of the second moment estimate starts to increase. 
+Since $m_t$ and $ν_t$ are almost zero during the initial time steps, they are bias-corrected to $\hat{m_t}$ and $\hat{v_t}$. 
+It can be observed that both $\hat{m_t}$ and $\hat{v_t}$ gradually decrease as the time step $t$ increases, which means the role of the first moment estimate starts to weaken, but the role of the second moment estimate starts to increase. 
 This is because, as the time step goes on, the parameters in the neural network will be closer to the optimal, and the optimizer should slow down the update pace and focus more on the adjustment of the learning rate of different parameters. 
 In the above formulas, the hyper-parameter $β_1$ is the first moment factor, which is usually set to 0.9. 
 The hyper-parameter $β_2$ is the second moment factor, which is usually set to 0.999. 
 The hyper-parameter $η$ is the learning rate, it is defined as the update step size of the optimizer. 
 The hyper-parameter $ε$ is a very small value used to prevent the denominator from being zero. 
-And $θ_t$ represents weights and biases at the time step $t$, it will be updated by the overall update vector $\frac{η}{\sqrt{v ̂_t+ε}} m ̂_t$.
+And $θ_t$ represents weights and biases at the time step $t$, it will be updated by the overall update vector $\frac{η}{\sqrt{\hat{v_t}+ε}} \hat{m_t}$.
 
 
 ### 13. Mini-batch Training
 
 $$
-θ_{t+1}=θ_t-η∇_{θ_t} J(θ_t, x^{(ⅈ:ⅈ+m)})
+θ_{t+1} = θ_t - η∇_{θ_t} J(θ_t, x^{(ⅈ:ⅈ+m)})
 $$
 
 For a larger dataset, training all the data at the same time is extremely computationally expensive, and neural networks will converge quite slowly. 
