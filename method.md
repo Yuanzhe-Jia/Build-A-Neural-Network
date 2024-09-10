@@ -222,6 +222,11 @@ $$
 θ_{t+1} = θ_t - v_t
 $$
 
+
+$$
+θ_{t+1} = θ_t - η∇_{θ_t} J{θ_t}
+$$
+
 Momentum is a commonly used acceleration method for (Stochastic Gradient Descent) SGD optimizer. 
 It adds a portion of the update vector from past time steps to the current update vector, resulting in the effect of speeding up optimization and suppressing oscillations. 
 Specifically, if the current gradient $∇_{θ_t} J(θ_t)$ and the momentum term $v_{t-1}$ point in the same direction, the overall update vector $v_t$ will increase, which is equivalent to speeding up the optimizer. 
