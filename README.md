@@ -40,6 +40,7 @@ from network_yuanzhe import model
 ```
 
 Step 3. 
-See an image classification example in the `experiements.ipynb` file to learn how to build a classifier based on the self-built neural network structure. 
+Download the `/test/exp.html` file and open it in your browser.
+The experiment show you how to build a classifier based on the self-built neural network structure. 
 The prediction loss, prediction accuracy and running time are adopted as the evaluation methods. 
 Hyper-parameter tuning, comparative analysis and ablation studies are also included.
