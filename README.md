@@ -27,20 +27,18 @@ The [neural network modules](https://github.com/Yuanzhe-Jia/Build-A-Neural-Netwo
 
 ### How to use
 
-Step 1. 
+Step 1: 
 Install [packages](https://pypi.org/project/network-yuanzhe/).
 ```
 !pip install network_yuanzhe==1.0.2
 ```
 
-Step 2. 
+Step 2:
 Import functions from the package.
 ```
 from network_yuanzhe import model
 ```
 
-Step 3. 
+Step 3:
 Download the `/test/exp.html` file and open it in your browser.
 The experiment show you how to build a classifier based on the self-built neural network structure. 
-The prediction loss, prediction accuracy and running time are adopted as the evaluation methods. 
-Hyper-parameter tuning, comparative analysis and ablation studies are also included.
